@@ -1,0 +1,25 @@
+{
+  "artists": [
+    {
+      "id": 1,
+      "name": "Metallica"
+    },
+    {
+      "id": 2,
+      "name": "Megadeth"
+    }
+  ],
+  "albums": [
+    {
+      "id": 1,
+      "name": "Master Of Puppets",
+      "artistID": 1
+    }
+  ],
+  "songs": {
+    "id": 1,
+    "name": "Orion",
+    "lyrics": "instrumental",
+    "albumID": 1
+  }
+}
