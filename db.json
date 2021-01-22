@@ -7,6 +7,22 @@
     {
       "id": 2,
       "name": "Megadeth"
+    },
+    {
+      "id": 3,
+      "name": "Killswitch Engage"
+    },
+    {
+      "id": 5,
+      "name": "Annihilator"
+    },
+    {
+      "id": 6,
+      "name": "Pantera"
+    },
+    {
+      "id": 7,
+      "name": "Odd Crew"
     }
   ],
   "albums": [

@@ -1,16 +1,11 @@
 import { useState } from 'react'
 
 
-const Input = () => {
+const Input = ({ data }) => {
     const [name, setName] = useState()
 
-    function change(e) {
-        console.log(e.target.value)
-        setName(e.target.value)
-    }
-    
     return (
-        <input type="text" onChange={(e) => change(e)}/>
+        <input type="text" onChange={(e) => setName(e.target.value)}/>
     )
 }
 

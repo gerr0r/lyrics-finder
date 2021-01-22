@@ -6,33 +6,30 @@ import List from './components/List'
 const url = 'http://localhost:4000'
 
 function App() {
+  console.log('App')
 
   const [artists, setArtists] = useState([])
+  const [artist, setArtist] = useState('')
 
-  useEffect(()=> {
-    const getArtists = async() => {
-      const artistList = await fetchArtists()
-      setArtists(artistList.map(artist => artist.name))
-      console.log(artists);
-    }
-
-    getArtists()
+  useEffect(() => {
+    (async () => { //iife
+      const artists = await fetchArtists()
+      setArtists(artists.map(artist => artist.name))
+    })()
   }, [])
-
 
   async function fetchArtists() {
     const response = await fetch(`${url}/artists`)
     const data = await response.json()
-
-    console.log(data)
     return data
   }
 
   return (
     <div className="App">
       <Header name='ARTIST' />
-      <Input />
-      <List data={artists}/>
+      {/* <Input /> */}
+      <input type="text" onChange={(e) => setArtist(e.target.value)}/>
+      <List data={artists.filter(n => n.toLowerCase().includes(artist.toLowerCase()))}/>
       <Header name='ALBUM' />
       <Input />
       <Header name='SONG' />
