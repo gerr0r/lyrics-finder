@@ -5,9 +5,9 @@ const List = ({ data }) => {
     console.log('List');
     return (
         <div>
-            {data.map(artist => {
+            {data.map(item => {
                 return (
-                    <ListItem key={artist} name={artist}/>
+                    <ListItem key={item.id} name={item.name}/>
                 )
             })}
         </div>
