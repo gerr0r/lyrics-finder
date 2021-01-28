@@ -1,13 +1,18 @@
-// import { useState } from 'react';
 import ListItem from './ListItem'
 
-const List = ({ data }) => {
-    console.log('List');
+const divContainer = {
+    "maxHeight": "222px",
+    "overflow" : "auto",
+    "scrollbarWidth": "none"
+}
+
+const List = ({ data, cb }) => {
+    // console.log('List');
     return (
-        <div>
+        <div style={divContainer}>
             {data.map(item => {
                 return (
-                    <ListItem key={item.id} name={item.name}/>
+                    <ListItem key={item.id} dataID={item.id} name={item.name} cb={cb}/>
                 )
             })}
         </div>

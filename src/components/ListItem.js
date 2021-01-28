@@ -1,6 +1,7 @@
-const ListItem = ({name}) => {
+const ListItem = ({name, dataID, cb}) => {
+
     return (
-        <h3>
+        <h3 onClick={e => cb(name, dataID)}>
             {name}
         </h3>
     )

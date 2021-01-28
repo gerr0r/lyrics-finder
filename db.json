@@ -23,6 +23,118 @@
     {
       "id": 6,
       "name": "Odd Crew"
+    },
+    {
+      "name": "Sepultura",
+      "id": 7
+    },
+    {
+      "name": "Kreator",
+      "id": 8
+    },
+    {
+      "name": "Opeth",
+      "id": 9
+    },
+    {
+      "name": "The Offspring",
+      "id": 10
+    },
+    {
+      "name": "Testament",
+      "id": 11
+    },
+    {
+      "name": "Trivium",
+      "id": 12
+    },
+    {
+      "name": "After The Burial",
+      "id": 13
+    },
+    {
+      "name": "The Afterimage",
+      "id": 14
+    },
+    {
+      "name": "Animals As Leaders",
+      "id": 15
+    },
+    {
+      "name": "Born Of Osiris",
+      "id": 16
+    },
+    {
+      "name": "The Contortionist",
+      "id": 17
+    },
+    {
+      "name": "Elitist",
+      "id": 18
+    },
+    {
+      "name": "Erra",
+      "id": 19
+    },
+    {
+      "name": "Fellsilent",
+      "id": 20
+    },
+    {
+      "name": "Forevermore",
+      "id": 21
+    },
+    {
+      "name": "Hacktivist",
+      "id": 22
+    },
+    {
+      "name": "Intervals",
+      "id": 23
+    },
+    {
+      "name": "Invent Animate",
+      "id": 24
+    },
+    {
+      "name": "Meshuggah",
+      "id": 25
+    },
+    {
+      "name": "Monuments",
+      "id": 26
+    },
+    {
+      "name": "Periphery",
+      "id": 27
+    },
+    {
+      "name": "Scale The Summit",
+      "id": 28
+    },
+    {
+      "name": "Skyharbor",
+      "id": 29
+    },
+    {
+      "name": "Tesseract",
+      "id": 30
+    },
+    {
+      "name": "Textures",
+      "id": 31
+    },
+    {
+      "name": "Veil Of Maya",
+      "id": 32
+    },
+    {
+      "name": "Vildhjarta",
+      "id": 33
+    },
+    {
+      "name": "Volumes",
+      "id": 34
     }
   ],
   "albums": [
@@ -85,6 +197,106 @@
       "id": 12,
       "name": "The Lost Pages",
       "artistID": 6
+    },
+    {
+      "name": "Countdown To Extinction",
+      "artistID": 2,
+      "id": 13
+    },
+    {
+      "name": "Load",
+      "artistID": 1,
+      "id": 14
+    },
+    {
+      "name": "Kill'em All",
+      "artistID": 1,
+      "id": 15
+    },
+    {
+      "name": "Ride The Lightning",
+      "artistID": 1,
+      "id": 16
+    },
+    {
+      "name": "...and Justice For All",
+      "artistID": 1,
+      "id": 17
+    },
+    {
+      "name": "Alice In Hell",
+      "artistID": 4,
+      "id": 18
+    },
+    {
+      "name": "Set The World On Fire",
+      "artistID": 4,
+      "id": 19
+    },
+    {
+      "name": "Refresh The Demon",
+      "artistID": 4,
+      "id": 20
+    },
+    {
+      "name": "Remains",
+      "artistID": 4,
+      "id": 21
+    },
+    {
+      "name": "Criteria For A Black Widow",
+      "artistID": 4,
+      "id": 22
+    },
+    {
+      "name": "Carnival Diablos",
+      "artistID": 4,
+      "id": 23
+    },
+    {
+      "name": "Waking The Fury",
+      "artistID": 4,
+      "id": 24
+    },
+    {
+      "name": "All For You",
+      "artistID": 4,
+      "id": 25
+    },
+    {
+      "name": "Schizo Deluxe",
+      "artistID": 4,
+      "id": 26
+    },
+    {
+      "name": "Metal",
+      "artistID": 4,
+      "id": 27
+    },
+    {
+      "name": "Annihilator",
+      "artistID": 4,
+      "id": 28
+    },
+    {
+      "name": "Feast",
+      "artistID": 4,
+      "id": 29
+    },
+    {
+      "name": "Suicide Society",
+      "artistID": 4,
+      "id": 30
+    },
+    {
+      "name": "For The Demented",
+      "artistID": 4,
+      "id": 31
+    },
+    {
+      "name": "Ballistic, Sadistic",
+      "artistID": 4,
+      "id": 32
     }
   ],
   "songs": [
@@ -303,6 +515,78 @@
       "name": "Bitterness Inside",
       "lyrics": "",
       "albumID": 12
+    },
+    {
+      "name": "Bliss",
+      "albumID": 8,
+      "lyrics": "",
+      "id": 37
+    },
+    {
+      "name": "Second To None",
+      "albumID": 8,
+      "lyrics": "",
+      "id": 38
+    },
+    {
+      "name": "Set The World On Fire",
+      "albumID": 19,
+      "lyrics": "",
+      "id": 39
+    },
+    {
+      "name": "No Zone",
+      "albumID": 19,
+      "lyrics": "",
+      "id": 40
+    },
+    {
+      "name": "Bats In The Belfry",
+      "albumID": 19,
+      "lyrics": "",
+      "id": 41
+    },
+    {
+      "name": "Snake In The Grass",
+      "albumID": 19,
+      "lyrics": "",
+      "id": 42
+    },
+    {
+      "name": "Phoenix Rising",
+      "albumID": 19,
+      "lyrics": "",
+      "id": 43
+    },
+    {
+      "name": "Knight Jumps Queen",
+      "albumID": 19,
+      "lyrics": "",
+      "id": 44
+    },
+    {
+      "name": "Sounds Good To Me",
+      "albumID": 19,
+      "lyrics": "",
+      "id": 45
+    },
+    {
+      "name": "The Edge",
+      "albumID": 19,
+      "lyrics": "",
+      "id": 46
+    },
+    {
+      "name": "Don't Bother Me",
+      "albumID": 19,
+      "lyrics": "",
+      "id": 47
+    },
+    {
+      "name": "Brain Dance",
+      "albumID": 19,
+      "lyrics": "",
+      "id": 48
     }
   ]
 }
