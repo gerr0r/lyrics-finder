@@ -15,10 +15,8 @@ function App() {
   const [album, setAlbum] = useState('')
   const [songs, setSongs] = useState([])
   const [song, setSong] = useState('')
-  const [artistBtn, setArtistBtn] = useState(false)
-  const [albumBtn, setAlbumBtn] = useState(true)
-  const [songBtn, setSongBtn] = useState(true)
   const [searchMode, setSearchMode] = useState(true)
+  const [activeLabel, setActiveLabel] = useState('artist')
 
   useEffect(() => {
     (async () => { //iife
@@ -162,20 +160,21 @@ function App() {
     let currentArtist, currentAlbum, currentSong
     switch (by) {
       case 'artists':
+        setActiveLabel('artist')
         setArtist(e)
-        setAlbumBtn(true)
         currentArtist = e
         currentAlbum = album
         currentSong = song
         break;
       case 'albums':
+        setActiveLabel('album')
         setAlbum(e)
-        setSongBtn(true)
         currentArtist = artist
         currentAlbum = e
         currentSong = song
         break;
       case 'songs':
+        setActiveLabel('song')
         setSong(e)
         currentArtist = artist
         currentAlbum = album
@@ -242,6 +241,7 @@ function App() {
 
   function changeArtist(selectedArtist, id) {
     setArtist(selectedArtist)
+    setActiveLabel('album')
     setAlbum('')
     setSong('')
     // filterData(selectedArtist, 'artists')
@@ -253,26 +253,21 @@ function App() {
     setAlbums(albs)
     setArtists(art)
     setSongs(son)
-
-    setSongBtn(true)
-    setAlbumBtn(false)
-    // setSearchMode(false)
   }
 
   function changeAlbum(selectedAlbum, id) {
     setAlbum(selectedAlbum)
+    setActiveLabel('song')
     setSong('')
     // filterData(selectedAlbum, 'albums')
     let alb = data.albums.filter(a => a.id === id)
     let art = data.artists.filter(a => a.id === alb[0].artistID)
     let son = data.songs.filter(s => s.albumID === id)
 
+    setArtist(art[0].name)
     setAlbums(alb)
     setArtists(art)
     setSongs(son)
-
-    setSongBtn(false)
-    // setSearchMode(false)
   }
   function changeSong(selectedSong, id) {
     setSong(selectedSong)
@@ -284,12 +279,11 @@ function App() {
     setAlbums(alb)
     setArtists(art)
     setSongs(son)
-
-    // setSearchMode(false)
   }
 
   function toggleSearchMode() {
     setSearchMode(!searchMode)
+
   }
 
   useEffect(() => {
@@ -297,30 +291,88 @@ function App() {
     else mountRef.current = true
   }, [searchMode])
 
+
+  function clearInputs() {
+    setArtist('')
+    setAlbum('')
+    setSong('')
+    setArtists(data.artists.sort((a, b) => a.name.localeCompare(b.name)))
+    setAlbums(data.albums.sort((a, b) => a.name.localeCompare(b.name)))
+    setSongs(data.songs.sort((a, b) => a.name.localeCompare(b.name)))
+    setActiveLabel('artist')
+  }
+
+
   return (
     <div className="App">
-      <button onClick={toggleSearchMode}>Switch to {searchMode ? 'write' : 'search'} mode</button>
-      <Header name='ARTISTS' />
-      <input hidden={!searchMode} type="text" value={artist} onChange={searchMode ? (e) => filterData(e.target.value, 'artists') : (e) => setArtist(e.target.value)} />
-      <textarea hidden={searchMode} cols="40" rows="14" onChange={(e) => setArtist(e.target.value)}
-        placeholder={"Add multiple artists by pressing enter to go on new line."}>
-      </textarea><br />
-      <button hidden={searchMode} disabled={artistBtn} onClick={addArtist}>Add Artist(s)</button>
-      <List data={artists} cb={changeArtist} />
-      <Header name='ALBUMS' />
-      <input hidden={!searchMode} type="text" value={album} onChange={searchMode ? (e) => filterData(e.target.value, 'albums') : (e) => setAlbum(e.target.value)} />
-      <textarea hidden={searchMode} cols="40" rows="14" onChange={(e) => setAlbum(e.target.value)}
-        placeholder={"Select artist first."}>
-      </textarea><br />
-      <button hidden={searchMode} disabled={albumBtn} onClick={addAlbum}>Add Album(s)</button>
-      <List data={albums} cb={changeAlbum} />
-      <Header name='SONGS' />
-      <input hidden={!searchMode} type="text" value={song} onChange={(e) => filterData(e.target.value, 'songs')} />
-      <textarea hidden={searchMode} cols="40" rows="14" onChange={(e) => setSong(e.target.value)}
-        placeholder={"Select album first."}>
-      </textarea><br />
-      <button hidden={searchMode} disabled={songBtn} onClick={addSong}>Add Song(s)</button>
-      <List data={songs} cb={changeSong} />
+      {searchMode && <div>
+        <Header name='ARTISTS' />
+        <input type="text" value={artist} onChange={(e) => filterData(e.target.value, 'artists')} />
+        <List data={artists} cb={changeArtist} />
+      </div>}
+
+      {!searchMode && (activeLabel === 'artist') && <div>
+
+        <textarea cols="40" rows="14" value={artist} onChange={(e) => setArtist(e.target.value)}
+          placeholder={''}>
+        </textarea><br />
+        <button onClick={addArtist}>Add Artist(s)</button>
+        <p>
+          Multiple artists can be added.<br />
+          Every line represents one artist.<br />
+          Press enter to go on new line. <br />
+          Existing artists will be ignored.
+        </p>
+      </div>}
+
+      {searchMode && <div>
+        <Header name='ALBUMS' />
+        <input type="text" value={album} onChange={(e) => filterData(e.target.value, 'albums')} />
+        <List data={albums} cb={changeAlbum} />
+      </div>}
+
+      {!searchMode && (activeLabel === 'album') && <div>
+        <h3>{artist}</h3>
+
+        <textarea cols="40" rows="14" value={album} onChange={(e) => setAlbum(e.target.value)}></textarea>
+        <br />
+        <button onClick={addAlbum}>Add Album(s)</button>
+        <p>Current artist albums:</p>
+        <List data={data.albums.filter(a => a.artistID === artists[0].id)} cb={() => { }} />
+        <p>
+          Multiple albums can be added.<br />
+          Every line represents one album.<br />
+          Press enter to go on new line. <br />
+          Existing albums for current artist  <br />
+          will be ignored.
+        </p>
+      </div>}
+
+      {searchMode && <div>
+        <Header name='SONGS' />
+        <input type="text" value={song} onChange={(e) => filterData(e.target.value, 'songs')} />
+        <List data={songs} cb={changeSong} />
+      </div>}
+
+      {!searchMode && (activeLabel === 'song') && <div>
+        <h3>{artist}</h3>
+        <h3>{album}</h3>
+        <textarea cols="40" rows="14" value={song} onChange={(e) => setSong(e.target.value)}></textarea>
+        <br />
+        <button onClick={addSong}>Add Song(s)</button>
+        <p>Current album songs:</p>
+        <List data={data.songs.filter(s => s.albumID === albums[0].id)} cb={() => { }} />
+        <p>
+          Multiple songs can be added.<br />
+          Every line represents one song.<br />
+          Press enter to go on new line. <br />
+          Existing songs for current album  <br />
+          will be ignored.
+        </p>
+      </div>}
+
+      <button onClick={toggleSearchMode}>{searchMode ? `Add new ${activeLabel}` : '<< Back to search mode'}</button>
+      <button hidden={!searchMode} onClick={clearInputs}>Clear</button>
     </div>
   )
 }
