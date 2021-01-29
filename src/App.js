@@ -46,7 +46,7 @@ function App() {
         currentSong = song
         break;
       case 'albums':
-        if (activeInput == "song") setActiveInput('album')
+        if (activeInput === "song") setActiveInput('album')
         setAlbum(e)
         currentArtist = artist
         currentAlbum = e
@@ -149,13 +149,16 @@ function App() {
   }
   function changeSong(selectedSong, id) {
     setSong(selectedSong)
+    setActiveInput('song')
     // filterData(selectedSong, 'songs')
     let son = data.songs.filter(s => s.id === id)
     let alb = data.albums.filter(a => a.id === son[0].albumID)
     let art = data.artists.filter(a => a.id === alb[0].artistID)
 
     setAlbums(alb)
+    setAlbum(alb[0].name)
     setArtists(art)
+    setArtist(art[0].name)
     setSongs(son)
   }
 
@@ -231,6 +234,7 @@ function App() {
           input={activeInput}
           value={{ artist, album, song }}
           current={{ artists, albums, songs }}
+          data={data}
           updateData={updateData}
         />}
 

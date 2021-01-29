@@ -1,26 +1,27 @@
 import { useState } from 'react'
 import { addArtist, addAlbum, addSong } from '../utils/db'
+import CurrentRecords from './CurrentRecords'
 import HelpText from './HelpText'
 
 
-const NewRecord = ({ input, value, current, updateData  }) => {
+const NewRecord = ({ input, value, current, data, updateData  }) => {
     // input - current input
     // value - current input value
     // ids - current selection ids
     // updateData - callback to update data object
-    const [data, setData] = useState(value[input])
+    const [rawData, setRawData] = useState(value[input])
 
     async function addData() {
         let newData = []
         switch (input) {
             case 'artist':
-                newData = await addArtist(data)
+                newData = await addArtist(rawData)
                 break;
             case 'album':
-                newData = await addAlbum(data, current.artists[0].id)
+                newData = await addAlbum(rawData, current.artists[0].id)
                 break;
             case 'song':
-                newData = await addSong(data, current.albums[0].id)
+                newData = await addSong(rawData, current.albums[0].id)
                 break;
             default:
                 break;
@@ -30,12 +31,14 @@ const NewRecord = ({ input, value, current, updateData  }) => {
 
     return (
         <div>
+            {input === 'artist' && <header><h3>New artists</h3></header> }
             {input === 'album' && <header><h3>{value.artist}</h3></header> }
             {input === 'song' && <header><h3>{value.album}</h3><h5>{value.artist}</h5></header> }
-            <textarea cols="40" rows="14" value={data} onChange={e => setData(e.target.value)}></textarea>
+            <textarea cols="40" rows="14" value={rawData} onChange={e => setRawData(e.target.value)}></textarea>
             <br />
             <button onClick={addData}>Add {input}(s)</button>
-            <HelpText input={input}></HelpText>
+            {input !== 'artist' && <CurrentRecords input={input} current={current} data={data}/>}
+            <HelpText input={input} />
         </div>
     )
 }

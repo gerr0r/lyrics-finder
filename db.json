@@ -306,6 +306,11 @@
       "name": "Agent Orange",
       "artistID": 35,
       "id": 33
+    },
+    {
+      "name": "Better Off Dead",
+      "artistID": 35,
+      "id": 34
     }
   ],
   "songs": [
@@ -614,6 +619,30 @@
       "albumID": 33,
       "lyrics": "",
       "id": 51
+    },
+    {
+      "name": "An Eye For An Eye",
+      "albumID": 34,
+      "lyrics": "",
+      "id": 52
+    },
+    {
+      "name": "Shellfire Defense",
+      "albumID": 34,
+      "lyrics": "",
+      "id": 53
+    },
+    {
+      "name": "The Saw Is The Law",
+      "albumID": 34,
+      "lyrics": "",
+      "id": 54
+    },
+    {
+      "name": "Turn Your Head Around (Tank Cover)",
+      "albumID": 34,
+      "lyrics": "",
+      "id": 55
     }
   ]
 }
