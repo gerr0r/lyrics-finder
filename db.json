@@ -135,6 +135,10 @@
     {
       "name": "Volumes",
       "id": 34
+    },
+    {
+      "name": "Sodom",
+      "id": 35
     }
   ],
   "albums": [
@@ -297,6 +301,11 @@
       "name": "Ballistic, Sadistic",
       "artistID": 4,
       "id": 32
+    },
+    {
+      "name": "Agent Orange",
+      "artistID": 35,
+      "id": 33
     }
   ],
   "songs": [
@@ -587,6 +596,24 @@
       "albumID": 19,
       "lyrics": "",
       "id": 48
+    },
+    {
+      "name": "Agent Orange",
+      "albumID": 33,
+      "lyrics": "",
+      "id": 49
+    },
+    {
+      "name": "Remember The Fallen",
+      "albumID": 33,
+      "lyrics": "",
+      "id": 50
+    },
+    {
+      "name": "Ausgebombt",
+      "albumID": 33,
+      "lyrics": "",
+      "id": 51
     }
   ]
 }

@@ -22,5 +22,12 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# UD
+### User defined section
+
+# eslint cashe
 .eslintcache
+
+# db backups
+db-*.json 
+# temporary stuff
+temp.txt
