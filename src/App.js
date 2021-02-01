@@ -3,6 +3,7 @@ import './App.css'
 import Header from './components/Header'
 import List from './components/List'
 import NewRecord from './components/NewRecord'
+import FindLyrics from './components/FindLyrics'
 const url = 'http://localhost:4000'
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
   const [album, setAlbum] = useState('')
   const [songs, setSongs] = useState([])
   const [song, setSong] = useState('')
+  const [lyrics, setLyrics] = useState('')
   const [searchMode, setSearchMode] = useState(true)
   const [activeInput, setActiveInput] = useState('artist')
 
@@ -131,6 +133,7 @@ function App() {
     setAlbums(albs)
     setArtists(art)
     setSongs(son)
+    setLyrics('')
   }
 
   function changeAlbum(selectedAlbum, id) {
@@ -146,6 +149,7 @@ function App() {
     setAlbums(alb)
     setArtists(art)
     setSongs(son)
+    setLyrics('')
   }
   function changeSong(selectedSong, id) {
     setSong(selectedSong)
@@ -160,10 +164,12 @@ function App() {
     setArtists(art)
     setArtist(art[0].name)
     setSongs(son)
+    setLyrics(son[0].lyrics)
   }
 
   function toggleSearchMode() {
     setSearchMode(!searchMode)
+    setLyrics('')
 
   }
 
@@ -181,6 +187,7 @@ function App() {
     setAlbums(data.albums.sort((a, b) => a.name.localeCompare(b.name)))
     setSongs(data.songs.sort((a, b) => a.name.localeCompare(b.name)))
     setActiveInput('artist')
+    setLyrics('')
   }
 
 
@@ -215,15 +222,15 @@ function App() {
     <div className="App">
       {searchMode &&
         <div>
-          <Header name='ARTISTS' />
+          <Header name='ARTIST' />
           <input type="text" value={artist} onChange={(e) => filterData(e.target.value, 'artists')} />
           <List data={artists} cb={changeArtist} />
 
-          <Header name='ALBUMS' />
+          <Header name='ALBUM' />
           <input type="text" value={album} onChange={(e) => filterData(e.target.value, 'albums')} />
           <List data={albums} cb={changeAlbum} />
 
-          <Header name='SONGS' />
+          <Header name='SONG' />
           <input type="text" value={song} onChange={(e) => filterData(e.target.value, 'songs')} />
           <List data={songs} cb={changeSong} />
         </div>
@@ -240,6 +247,7 @@ function App() {
 
       <button onClick={toggleSearchMode}>{searchMode ? `Add new ${activeInput}` : '<< Back to search mode'}</button>
       <button hidden={!searchMode} onClick={clearInputs}>Clear</button>
+      {lyrics && <FindLyrics lyrics={lyrics}/>}
     </div>
   )
 }

@@ -27,7 +27,14 @@ yarn-error.log*
 # eslint cashe
 .eslintcache
 
+#db
+db.json
+
 # db backups
 db-*.json 
+
+#db config
+json-server.json
+
 # temporary stuff
 temp.txt

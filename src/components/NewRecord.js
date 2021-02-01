@@ -12,6 +12,7 @@ const NewRecord = ({ input, value, current, data, updateData  }) => {
     const [rawData, setRawData] = useState(value[input])
 
     async function addData() {
+        if (!rawData) return
         let newData = []
         switch (input) {
             case 'artist':
@@ -26,6 +27,7 @@ const NewRecord = ({ input, value, current, data, updateData  }) => {
             default:
                 break;
         }
+        // if (!newData) return
         updateData(newData, input)
     }
 
@@ -34,9 +36,14 @@ const NewRecord = ({ input, value, current, data, updateData  }) => {
             {input === 'artist' && <header><h3>New artists</h3></header> }
             {input === 'album' && <header><h3>{value.artist}</h3></header> }
             {input === 'song' && <header><h3>{value.album}</h3><h5>{value.artist}</h5></header> }
-            <textarea cols="40" rows="14" value={rawData} onChange={e => setRawData(e.target.value)}></textarea>
+            <textarea 
+            cols="40" 
+            rows="14" 
+            value={rawData} 
+            onChange={e => setRawData(e.target.value)}
+            placeholder={rawData ? undefined :`Add new ${input}`} ></textarea>
             <br />
-            <button onClick={addData}>Add {input}(s)</button>
+            <button onClick={addData} disabled={!Boolean(rawData)}>Add {input}(s)</button>
             {input !== 'artist' && <CurrentRecords input={input} current={current} data={data}/>}
             <HelpText input={input} />
         </div>

@@ -7,7 +7,6 @@ const divContainer = {
 }
 
 const List = ({ data, cb }) => {
-    // console.log('List');
     return (
         <div style={divContainer}>
             {data.map(item => {
